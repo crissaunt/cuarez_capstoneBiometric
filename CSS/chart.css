@@ -1,0 +1,243 @@
+
+:root{
+    --color-default:#1f3b23;
+    --color-danger:#ac2500;
+    --color-danger2:#ac2500;
+    --color-default2:#345c3a;
+    --color-second:#00ac1a;
+    --color-white:#fff;
+    --color-body:#f2f5f2;
+    --color-light:#e0e0e0;
+  }
+  
+
+
+  
+  .vote-counts h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4CAF50;
+  }
+  
+  h2 {
+    margin-top: 20px;
+    color: #333;
+  }
+  
+  .vote-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .vote-table th, .vote-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .vote-table th {
+    background-color: var(--color-default);
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  .vote-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .vote-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Container for the charts */
+  .vote-counts {
+    margin: 20px;
+  }
+  
+  /* Grid layout for the charts */
+  #charts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 2 charts per row */
+    gap: 30px; /* Space between the charts */
+  }
+  
+  .chart-container canvas {
+    width: 100% !important; /* Make the canvas fill the container */
+    height: auto !important; /* Make the canvas adjust height proportionally */
+  }
+  
+  /* Style for each chart container */
+  .chart-container {
+    position: relative;
+    min-height: auto; /* Ensure the container has a minimum height */
+    background-color: #f4f4f4; /* Optional background for chart container */
+    border-radius: 8px; /* Optional rounded corners */
+    padding: 10px; /* Optional padding inside each container */
+    display: flex; /* Use flexbox to make the canvas fill the container */
+    justify-content: center;
+    align-items: center;
+    width: 100%;  /* Ensure the container is full width */
+    flex-grow: 2; /* Ensure it grows to fill the space */
+  }
+  
+  /* Title for each position group */
+  .position-group h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive design for small screens */
+  @media (max-width: 768px) {
+    #charts {
+        grid-template-columns: 1fr; /* Stack the charts in a single column on small screens */
+    }
+  }
+ 
+
+  table {
+   
+    width: 100%;
+    max-width: 700px;
+    border-collapse: collapse;
+}
+
+
+ thead {
+    margin: 0;
+}
+
+thead th {
+    background-color: var(--color-default);
+    color: var(--color-light);
+    text-align: left; /* Align text to the left */
+}
+
+
+th,
+td {
+    border-bottom: 1px solid --color-light;
+    padding: 10px 20px;
+    font-size: 14px;
+    word-wrap: break-word;
+    
+}
+
+
+tr:nth-child(even) {
+    background-color: var(--color-body);
+}
+
+tr:nth-child(odd) {
+    background-color: var(--color-light);
+}
+
+tr:hover td {
+    color:var(--color-second);
+    cursor: pointer;
+}
+
+
+
+body {
+  background-color: var(--color-body);
+  font-family: 'Poppins', sans-serif;
+  
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+
+
+.header{
+ 
+  top:0; left:0; right:0;
+  background-color: var(--color-default);
+  z-index: 1000;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+  border-bottom: 1px solid --color-second;
+
+}
+
+.header .flex{
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:1.5rem 2rem;
+  max-width: 1200px;
+  position: relative;
+}
+
+.header .flex .logo{
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color:var(--color-white);
+
+  
+}
+
+.header .flex .navbar ul{
+  list-style: none;
+}
+
+.header .flex .navbar ul li{
+  float: left;
+  position: relative;
+}
+
+.header .flex .navbar ul li a{
+  font-size: 2rem;
+  padding:1rem 1.5rem;
+  display: block;
+  color:var(--color-white);
+  text-transform: capitalize;
+}
+
+.header .flex .navbar ul li a:hover{
+
+  color:var(--color-white);
+  border-radius: 5px;
+}
+
+.header .flex .navbar ul li ul{
+  position: absolute;
+  left:0;
+  width: 11rem;
+
+  animation: fadeIn .2s linear;
+  border-radius: 5px;
+  display: none;
+}
+
+.header .flex .navbar ul li ul li{
+  width: 100%;
+}
+
+.header .flex .navbar ul li:hover ul{
+  display: inline-block;
+}
+
+.header .flex .icons > *:hover{
+  color:var(--color-second);
+}
+
+.header .flex .icons span{
+  font-size: 2rem;
+}
+.button-37 {
+  background-color: #198a0d;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}

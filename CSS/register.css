@@ -1,0 +1,213 @@
+/* General Body Styling */
+body {
+    background-color: #f0f4f8;
+    font-family: "Roboto", sans-serif;
+    padding-top: 80px; /* Padding to prevent overlap with fixed header */
+    height: 100%; /* Ensures the body takes full viewport height */
+    margin: 0; /* Prevents unwanted scroll due to margin */
+
+    display: flex;
+    justify-content: center; /* Centers the modal horizontally */
+    align-items: center; /* Centers the modal vertically */
+}
+ /* Add your styles here */
+ .video-container {
+    display: none; /* Hidden initially */
+    width: 100%;
+    margin-top: 20px; /* Add space above the video */
+    position: relative;
+    max-height: 50vh; /* Prevent it from occupying too much vertical space */
+    overflow: hidden; /* Ensure the video stays contained */
+    border-radius: 8px;
+}
+video {
+    width: 100%; /* Make video responsive */
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Modal Background */
+.modal {
+    flex-direction: column; /* Ensure modal content stacks vertically */
+
+ 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    padding-top: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 40px;
+    max-height: 100vh; /* Set maximum height for the modal */
+ 
+}
+
+/* Modal Content */
+.modal-content {
+    width: 100%;
+}
+
+/* Header */
+.header {
+    background-color: #093704; /* Example color */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+/* Flex container for the header elements */
+.header .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Logo Styling */
+.header .flex .logo img {
+    width: 200px;
+    height: auto;
+}
+
+/* Button Styling */
+.header .flex .icons {
+    display: flex;
+    align-items: center;
+}
+
+.header .flex .icons .button-37 {
+    background-color: #198a0d;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.header .flex .icons .button-37:hover {
+    background-color: #0e5a02;
+}
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.input-box {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 4px;
+    font-weight: 500;
+    color: #444;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    gap: 5px;
+    margin-right: 9px;
+}
+
+input:focus,
+select:focus {
+    border-color: #147409;
+    outline: none;
+}
+
+/* Video and Image Styling */
+video,
+img {
+    margin-top: 10px;
+    border-radius: 6px;
+    width: 100%;
+    height: auto;
+}
+
+/* Button Styling */
+button {
+    background-color: #0a568f;
+    color: white;
+    padding: 8px ;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #116cb2;
+}
+
+/* Loading Indicator */
+#loading-indicator {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    width: 50%;
+    background-color: #093704;
+    margin-top: 20px;
+    margin-left: 25%;
+    
+
+}
+
+button[type="submit"]:hover {
+    background-color: #1b850a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .input-row {
+        flex-direction: column;
+    }
+
+    .input-box {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .header .flex {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .header .flex .logo {
+        margin-bottom: 15px;
+    }
+
+    .header .flex .icons {
+        margin-top: 15px;
+    }
+}

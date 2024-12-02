@@ -1,0 +1,183 @@
+body {
+    background-color: #e8efe8;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: column;      /* Stack header and container vertically */
+    align-items: center;         /* Center horizontally */
+    min-height: 100vh;           /* Ensure full viewport height */
+    margin: 0;                   /* Remove default margin */
+}
+
+
+/* Container to hold the login box centered */
+.container {
+    display: flex;
+    justify-content: center;     /* Center horizontally */
+    align-items: center;         /* Center vertically */
+    flex-grow: 1;                /* Takes remaining space below header */
+         /* Prevent overlap with the header */
+}
+
+/* Existing Login Box styles */
+.login-box {
+    width: 380px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    
+}
+
+form {
+    width: 100%;
+}
+
+form label {
+    display: block;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+    box-sizing: border-box;       /* Ensures padding doesn’t affect width */
+}
+
+input[type="submit"] {            
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+    background-color: #093704;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {     
+    background-color: #147409;
+}
+
+p {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 15px;
+}
+
+.para-2 {
+    text-align: center;
+    color: #042037;
+    font-size: 15px;
+
+}
+
+.para-2 a {
+    color: #042737;
+}
+.error-message {
+    color: red;
+    font-size: 14px;
+
+    text-align: center;
+}
+
+
+.header {
+    width: 100%;
+    background-color: #093704;   /* Example color */
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+}
+ 
+ .header .flex{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:1.5rem 2rem;
+    max-width: 1200px;
+    position: relative;
+ }
+ 
+ .header .flex .logo{
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color:var(--color-white);
+
+    
+ }
+ 
+ .header .flex .navbar ul{
+    list-style: none;
+ }
+ 
+ .header .flex .navbar ul li{
+    float: left;
+    position: relative;
+ }
+ 
+ .header .flex .navbar ul li a{
+    font-size: 2rem;
+    padding:1rem 1.5rem;
+    display: block;
+    color:var(--color-white);
+    text-transform: capitalize;
+ }
+ 
+ .header .flex .navbar ul li a:hover{
+ 
+    color:var(--color-white);
+    border-radius: 5px;
+ }
+ 
+ .header .flex .navbar ul li ul{
+    position: absolute;
+    left:0;
+    width: 11rem;
+
+    animation: fadeIn .2s linear;
+    border-radius: 5px;
+    display: none;
+ }
+ 
+ .header .flex .navbar ul li ul li{
+    width: 100%;
+ }
+ 
+ .header .flex .navbar ul li:hover ul{
+    display: inline-block;
+ }
+
+ .header .flex .icons > *:hover{
+    color:var(--color-second);
+ }
+ 
+ .header .flex .icons span{
+    font-size: 2rem;
+ }
+ .header .button-37 {
+    background-color: #198a0d;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

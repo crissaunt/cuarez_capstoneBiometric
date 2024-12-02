@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+:root {
+    --color-default: #1f3b23;
+    --color-danger: #ac2500;
+    --color-danger2: #ac2500;
+    --color-default2: #345c3a;
+    --color-second: #00ac1a;
+    --color-white: #fff;
+    --color-body: #f2f5f2;
+    --color-light: #e0e0e0;
+}
+
+
+
+*{
+    font-family: 'Rubik', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+   
+ }
+ html{
+    font-size: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
+ }
+ 
+ body{
+    background: var(--color-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+ }
+ 
+
+.form-container {
+    background-color: var(--color-body);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:3rem 2rem;
+    box-shadow: 0 1rem 1.5rem rgba(0,0,0,.1);
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    border: 2px solid var(--color-default);
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+input.box {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: 2px solid black;
+}
+
+input.box:focus {
+    border-color: var(--color-second);
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+input.btn {
+    width: 50%;
+    padding: 12px;
+    border: none;
+    background-color: var(--color-default);
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+    margin: 0 auto; /* Ensures button stays centered */
+    display: flex;
+    justify-content: center; /* Center text within the button */
+    align-items: center; /* Center text vertically within the button */
+}
+
+input.btn:hover {
+    background-color: var(--color-default2)
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+p a {
+    color:var(--color-second) ;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}

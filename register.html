@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capture Face</title>
+    <link rel="stylesheet" href="CSS/register.css">
+
+    <script defer src="face-api.min.js"></script> <!-- Ensure this path is correct -->
+    <!-- <script defer src="https://cdn.jsdelivr.net/npm/face-api.js"></script> -->
+
+    <style>
+       
+    </style>
+</head>
+<body>
+    <script defer src="js/students.js" defer></script> <!-- Use 'defer' to ensure it runs after HTML is loaded -->
+
+
+    <header class="header">
+        <div class="flex">
+            <a href="#" class="logo"><img src="img/image.png" alt="Logo" width="200px"></a>
+            <div class="icons">
+                <a href="php/login.php"><button class="button-37">Login</button></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="modal" >
+        <div class="modal-content">
+            <form action="php/register.php" method="POST" onsubmit="return validateForm()">
+                <!-- Corrected CSRF token -->
+                <div class="input-row">
+                    <div class="input-box">
+                        <label for="id">ID Number:</label>
+                        <input type="text" name="registrationNumber" id="registrationNumber" placeholder="0000-0000">     
+                    </div>
+                    <div class="input-box">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" name="first_name" id="first_name" placeholder="John">     
+                    </div>
+                    <div class="input-box">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" name="last_name" id="last_name" placeholder="Doe">  
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-box">
+                        <label for="gender">Gender:</label>
+                        <select name="gender" id="gender">
+                            <option hidden>Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                      
+                    </div>
+                    <div class="input-box">
+                        <label for="program">Program:</label>
+                        <input type="text" name="program" id="program" placeholder="BSIT">
+                    </div>   
+                    <div class="input-box">
+                      <label for="email">Email:</label>
+                      <input type="text" name="email" id="email" placeholder="5W7sT@example.com">
+                  </div> 
+                </div>
+                <div class="input-row">
+                    
+                    <div class="input-box">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password">
+                        <div class="error-message"></div>
+                    </div>    
+                    <div class="input-box">
+                      <label for="confirm_password">Confirm Password:</label>
+                      <input type="password" name="confirm_password" id="confirm_password">
+                      <div class="error-message1"></div>
+                  </div>  
+                  <script>
+                    const  passwordInput = document.getElementById('password');
+                    const confirmPasswordInput = document.getElementById('confirm_password');
+                    const errorMessage = document.querySelector('.error-message');
+                    const errorMessage1 = document.querySelector('.error-message1');
+
+                    confirmPasswordInput.addEventListener('input', () => {
+                      if (passwordInput.value || confirmPasswordInput.value) {
+                        errorMessage.textContent = '';
+                        errorMessage1.textContent = '';
+                          if (passwordInput.value !== confirmPasswordInput.value) {
+                            errorMessage.textContent = 'Passwords do not match.';
+                            errorMessage1.textContent = 'Passwords do not match.';
+                          } else {
+                            errorMessage.textContent = '';
+                            errorMessage1.textContent = '';
+                          }
+                        }
+                    });
+
+                  </script>
+                  <style>
+                    .error-message,.error-message1 {
+                      color: red;
+                      font-size: 12px;
+                      margin-top: 5px;
+                    }
+                  </style>
+
+                </div>     
+                <div class="input-row">
+                        <div class="input-box">
+                            <button type="button" id="capture-btn1" onclick="openCamera('capture-btn1')">Open Camera 1</button>
+                            <video id="capture-btn1-video" autoplay muted style="display: none; width: 100%; border: 1px solid #ccc;"></video>
+                            <img id="capture-btn1-captured-image" style="display: none; width: 100%; border: 1px solid #ccc;" alt="Loading..." />
+                            <!-- Add this inside your HTML, perhaps near the video element -->
+                            <div id="capture-btn1-loading-indicator" style="display: none;font-size:x-small;">Processing, please wait...</div>
+                            <input type="hidden" id="capture-btn1-captured-image-input" name="studentimage1" />
+                        </div>
+                        <div class="input-box">
+                            <button type="button" id="capture-btn2" onclick="openCamera('capture-btn2')">Open Camera 2</button>
+                            <video id="capture-btn2-video" autoplay muted style="display: none; width: 100%; border: 1px solid #ccc;"></video>
+                            <img id="capture-btn2-captured-image" style="display: none; width: 100%; border: 1px solid #ccc;" alt="Loading..." />
+                            <!-- Add this inside your HTML, perhaps near the video element -->
+                            <div id="capture-btn2-loading-indicator" style="display: none;">Processing, please wait...</div>
+                            <input type="hidden" id="capture-btn2-captured-image-input" name="studentimage2" />
+                        </div>
+                    </div>
+<!-- 
+                <script src="JS/addstudent.js"></script> -->
+                <button type="submit" name="add_voter" >Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        async function openCamera(buttonId) {
+          try {
+            // Access the webcam
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            const videoElement = document.getElementById(buttonId + '-video');
+            
+            videoElement.style.display = 'block'; // Make video visible
+            videoElement.srcObject = stream;
+        
+            // Create a capture button dynamically
+            const captureButton = document.createElement('button');
+            captureButton.textContent = 'Capture Image';
+            captureButton.style.marginTop = '10px';
+            videoElement.parentNode.appendChild(captureButton);
+        
+            captureButton.onclick = async () => {
+              const capturedImageDataUrl = captureImage(videoElement);
+        
+              // Stop the video stream
+              stream.getTracks().forEach(track => track.stop());
+              videoElement.style.display = 'none';
+              videoElement.parentNode.removeChild(captureButton);
+        
+              // Display the captured image
+              const imgElement = document.getElementById(buttonId + '-captured-image');
+              imgElement.src = capturedImageDataUrl;
+              imgElement.style.display = 'block';
+        
+              // Perform face detection on the captured image
+              await detectFace(capturedImageDataUrl, buttonId);
+        
+              // Update the hidden input with the captured image data
+              const hiddenInput = document.getElementById(buttonId + '-captured-image-input');
+              hiddenInput.value = capturedImageDataUrl;
+            };
+          } catch (error) {
+            console.error('Error accessing webcam:', error);
+            alert('Unable to access the webcam. Please check your permissions.');
+          }
+        }
+        
+        function captureImage(video) {
+          const canvas = document.createElement('canvas');
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          const context = canvas.getContext('2d');
+          context.drawImage(video, 0, 0, canvas.width, canvas.height);
+          return canvas.toDataURL('image/png');
+        }
+
+     
+        
+        // Load face-api.js models
+        async function loadModels() {
+          const MODEL_URL = '/models'; // Ensure models are placed in this folder
+          await faceapi.loadSsdMobilenetv1Model(MODEL_URL);
+          await faceapi.loadFaceLandmarkModel(MODEL_URL);
+          await faceapi.loadFaceRecognitionModel(MODEL_URL);
+        }
+        
+        // Detect a face from the captured image
+        // Detect a face from the captured image
+        async function detectFace(imageDataUrl, buttonId) {
+          const img = new Image();
+          img.src = imageDataUrl;
+        
+          // Show the loading indicator
+          const loadingIndicator = document.getElementById(buttonId+'-loading-indicator');
+          loadingIndicator.style.display = 'block';
+        
+          img.onload = async () => {
+            try {
+              const canvas = document.createElement('canvas');
+              canvas.width = img.width;
+              canvas.height = img.height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0);
+        
+              const detections = await faceapi.detectSingleFace(canvas).withFaceLandmarks().withFaceDescriptor();
+              console.log('Detection result:', detections);
+
+        
+              if (detections) {
+                console.log('Face detected:', detections);
+                alert('Face detected!');
+              } else {
+                console.log('No face detected.');
+                alert('No face detected. Please try again.');
+                const imgElement = document.getElementById(buttonId + '-captured-image');
+                 imgElement.style.display = 'none';  // Hide the captured image
+
+                openCamera(buttonId);  // Restart the camera
+                return;
+              }
+            } catch (error) {
+              console.error('Error during face detection:', error);
+              alert('An error occurred during face detection.');
+            } finally {
+              // Hide the loading indicator after processing completes
+              loadingIndicator.style.display = 'none';
+            }
+          };
+        
+        
+        
+        }
+        
+        
+        // Call this to ensure models are loaded when the page is ready
+        window.onload = loadModels;
+        </script>
+
+
+
+</body>
+</html>

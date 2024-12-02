@@ -1,0 +1,515 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+#container {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   margin-top: 20px;
+}
+canvas {
+   position: absolute;
+   top: 0;
+   left: 0;
+   pointer-events: none;
+   z-index: 1;
+}
+
+:root{
+   --color-default:#093704;
+   --color-second: green;
+   --color-white:#fff;
+   --color-body:#f2f5f2;
+   --color-light:#e0e0e0;
+ }
+
+
+*{
+   padding: 0%;
+   margin: 0%;
+   box-sizing: border-box;
+   font-family: 'Poppins', sans-serif;
+ }
+ html{
+   font-size: 62.5%;
+
+ }
+ 
+ body {
+   background-color: var(--color-body);
+   font-family: 'Poppins', sans-serif;
+   
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   margin: 0;
+}
+
+
+.header{
+ 
+    top:0; left:0; right:0;
+    background-color: var(--color-default);
+    z-index: 1000;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    border-bottom: 1px solid --color-second;
+
+ }
+ 
+ .header .flex{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:1.5rem 2rem;
+    max-width: 1200px;
+    position: relative;
+ }
+ 
+ .header .flex .logo{
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color:var(--color-white);
+
+    
+ }
+ 
+ .header .flex .navbar ul{
+    list-style: none;
+ }
+ 
+ .header .flex .navbar ul li{
+    float: left;
+    position: relative;
+ }
+ 
+ .header .flex .navbar ul li a{
+    font-size: 2rem;
+    padding:1rem 1.5rem;
+    display: block;
+    color:var(--color-white);
+    text-transform: capitalize;
+ }
+ 
+ .header .flex .navbar ul li a:hover{
+ 
+    color:var(--color-white);
+    border-radius: 5px;
+ }
+ 
+ .header .flex .navbar ul li ul{
+    position: absolute;
+    left:0;
+    width: 11rem;
+
+    animation: fadeIn .2s linear;
+    border-radius: 5px;
+    display: none;
+ }
+ 
+ .header .flex .navbar ul li ul li{
+    width: 100%;
+ }
+ 
+ .header .flex .navbar ul li:hover ul{
+    display: inline-block;
+ }
+
+ .header .flex .icons > *:hover{
+    color:var(--color-second);
+ }
+ 
+ .header .flex .icons span{
+    font-size: 2rem;
+ }
+
+
+
+ .form {
+   height: 100%; 
+   max-width: 800px;
+   width: 100%;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   margin-left: 200px;
+   display: flex; /* Add flexbox */
+   flex-direction: column;
+   align-items: center; /* Center horizontally */
+   justify-content: center; /* Center vertically */
+}
+.form .electionTitle{
+   font-size: xxx-large;
+   font-weight: 900;
+}
+
+.required{
+font-size: 13px;
+color: red;
+}
+
+
+ 
+
+
+.title-div{
+	height: auto;
+   max-width: 900px;
+   min-width: 600px;
+	width:100%;
+	background-color: var(--color-white);
+   margin-top: 20px;
+	border-radius: 8px;
+	border-top: 15px solid var(--color-default);
+	border-bottom:0 ;
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   color: var(--color-default);
+}
+
+.title-div img{
+   height: 200px;
+   width: 100%;
+
+}
+
+.id-div {
+   color: var(--color-default);
+   height: auto;
+   min-width: 400px;
+   max-width: 700px;
+   width: 100%;
+   background-color: var(--color-white);
+   align-items: center; /* Center items vertically */
+   margin: 15px;
+   border-radius: 7px;
+   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+   padding: 2rem 4px;
+   display: flex;
+   flex-direction: row; /* Align items in a row */
+   gap: 10px; /* Add spacing between label and input */
+
+
+}
+
+.id-div label {
+   font-size: 15px;
+   color: var(--color-default);
+   font-weight: bold;
+   margin-left: 3rem; /* Remove bottom margin to align better */
+   white-space: nowrap; /* Prevent label text from wrapping */
+   border: none;
+   letter-spacing: 3px;
+}
+
+.id-div input[type="text"] {
+   flex: 1; /* Allow input to take remaining space */
+   padding: 5px;
+   font-size: 15px;
+   border: 2px solid var(--color-light);
+   border-radius: 5px;
+   outline: none;
+   transition: border-color 0.3s;
+}
+
+.id-div input[type="text"]:focus {
+   border-color: var(--color-second);
+   box-shadow: 0 0 5px rgba(31, 59, 35, 0.3);
+}
+.maxVote {
+   display: flex; /* Enables flexbox */
+   justify-content: space-between; /* Positions elements at opposite ends */
+   align-items: center; /* Aligns items vertically in the center */
+   width: 100%; /* Ensures the container takes full width */
+   padding: 10px; /* Optional: Add padding for spacing */
+}
+
+button.reset {
+    background-color: rgb(59, 130, 55);
+    color: var(--color-white);
+    border: 2px solid var(--color-light);
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button.reset:hover {
+    background-color: var(--color-default);
+    color: var(--color-white);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+button.reset:active {
+    background-color: var(--color-second);
+    color: var(--color-white);
+    box-shadow: inset 0 0.3rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+button.reset:focus {
+    outline: none;
+    border-color: var(--color-second);
+}
+
+
+
+
+
+
+
+
+
+
+.name-div{
+   color: var(--color-default);
+	height: auto;
+   min-width: 600px;
+   max-width: 900px;
+	width:100% ;
+	background-color: var(--color-white);
+	margin-top: 15px;
+ 
+	border-radius: 8px;
+   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+   
+}
+
+.name{
+	padding-top: 20px;
+	padding-left: 25px;
+	padding-bottom: 25px;
+	font-size: 15px;
+   border-bottom: 1px solid #e3e3e3;
+}
+
+.registrationNumber{
+   border-radius: 8px;
+   border-top: 10px solid var(--color-default);
+	padding-top: 20px;
+	padding-left: 25px;
+	
+	font-size: 15px;
+}
+
+.input-div{
+	
+	padding-left: 25px;
+   padding-bottom: 15px;
+   align-items: center;
+   display: flex;
+
+}
+
+
+.input-div img {
+   width: 120px; /* Set the width of the image */
+   height: 125px; /* Set the height of the image */
+   border-radius: 5px; /* Make the image circular */
+   object-fit: cover; /* Scale the image to fit the container */
+   margin-right: 10px; /* Space between the image and the label */
+   border: 1px solid var(--color-light); /* Add a border around the image */
+}
+.input-div input[type="radio"] {
+   margin-right: 30px; /* Space between the radio button and the label */
+   width: 25px; /* Explicit width for the radio button */
+   height: 25px; /* Explicit height for the radio button */
+   transform: scale(1.5); /* Make the radio button even larger */
+   accent-color: var(--color-second); /* Theme color for the radio button */
+   cursor: pointer; /* Changes cursor to pointer for better UX */
+   transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth animation for interactions */
+}
+
+.input-div input[type="radio"]:hover {
+   transform: scale(1.7); /* Slightly enlarge on hover for better feedback */
+}
+
+
+
+
+.candidateInfo {
+   padding: 20px;
+   width: 100%;
+   text-align: left;
+   font-family: 'Poppins', sans-serif;
+}
+
+.candidateInfo label {
+   font-size: 18px;
+   font-weight: bold;
+   color: var(--color-default);
+   letter-spacing: 3px;
+   display: block;
+}
+
+.candidateInfo p {
+   font-size: 13px;
+   color: #555;
+   margin: 5px 0;
+   letter-spacing: 2px;
+}
+
+.candidateInfo button {
+   background-color: var(--color-default);
+   color: var(--color-white);
+   border: none;
+   border-radius: 3px;
+   padding: 5px 10px;
+   font-size: 9px;
+   font-weight: 500;
+   cursor: pointer;
+   margin-top: 7px;
+   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.candidateInfo button:hover {
+   background-color: var(--color-second);
+   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+
+.btn{
+	height: 36px;
+	width: 100px;
+	background-color: #6703c4;
+	border-radius: 5px;
+	font-size: 14px;
+	letter-spacing: .5px;
+	font-weight: 540;
+	border: none;
+	padding: 10px;
+	position: absolute;
+	margin: 15px;
+	color: var(--color-white);
+}
+.last-div h2{
+	text-align: center;
+	padding-top: 50px;
+	color: #a2a4a6;
+	font-weight: 200;
+}
+.term{
+	font-size: 12px;
+	padding-left: 65px;
+	padding-top: 5px;
+	position: absolute;
+}
+.never{
+	padding-left: 15px;
+	font-size: 12px;
+	padding-top: 70px;
+	font-weight: 400;
+
+}
+
+
+.button-div{
+    height: auto;
+	width:100% ;
+	
+	margin: 15px;
+	border-radius: 8px;
+
+}
+
+
+.button-37 {
+    background-color: var(--color-default);
+    border: 1px solid green;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    box-sizing: border-box;
+    color: var(--color-white);
+    cursor: pointer;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    outline: none;
+    outline: 0;
+    padding: 10px 25px;
+    text-align: center;
+    transform: translateY(0);
+    transition: transform 150ms, box-shadow 150ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-37:hover {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+  }
+
+
+  .description{
+    font-size: 15px;
+    
+  }
+
+
+
+
+  .modal {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.5);
+   display: none;
+ }
+ 
+ .modal video {
+   width: 80%;
+   height: auto;
+   margin: 40px auto;
+ }
+ 
+ .close-button {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   font-size: 24px;
+   cursor: pointer;
+ }
+
+/* The Modal (background) */
+.voteModal {
+   display: none; 
+   position: fixed; 
+   z-index: 1; 
+   padding-top: 100px; 
+   left: 0;
+   top: 0;
+   width: 100%; 
+   height: 100%; 
+   overflow: auto; 
+   background-color: rgb(0,0,0); 
+   background-color: rgba(0,0,0,0.4); 
+}
+
+/* Modal Content */
+.voted-content {
+   background-color: #fefefe;
+   margin: auto;
+   padding: 20px;
+   border: 1px solid #888;
+   width: 80%;
+}
+
+/* The Close Button */
+.close {
+   color: #aaa;
+   float: right;
+   font-size: 28px;
+   font-weight: bold;
+}
+.close:hover,
+.close:focus {
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
+}

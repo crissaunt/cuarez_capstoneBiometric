@@ -1,0 +1,177 @@
+:root {
+    --color-default: #1f3b23;
+    --color-danger: #ac2500;
+    --color-danger2: #ac2500;
+    --color-default2: #345c3a;
+    --color-second: #00ac1a;
+    --color-white: #fff;
+    --color-body: #f2f5f2;
+    --color-light: #e0e0e0;
+}
+
+/* Modal container - hidden by default */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    padding-top: 50px; /* Add some space from the top */
+    animation: fadeIn 0.3s ease; /* Smooth fade-in effect */
+}
+
+
+/* Keyframes for smooth fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal content */
+.modal-content {
+    border-top: 10px solid var(--color-default);
+    background-color: var(--color-white);
+    padding: 50px;
+    border-radius: 7px;
+    max-width: 700px;
+    width: 100%; /* Adjusted width for a sleeker look */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.4s ease; /* Smooth slide-up effect */
+    position: relative; /* For positioning the close button */
+
+}
+
+/* Keyframes for smooth slide-in animation */
+@keyframes slideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Input row layout */
+.modal-content .input-row {
+    display: flex;
+    gap: 15px; /* Reduced space between input boxes for a tighter layout */
+    margin-bottom: 5px; /* Reduced bottom margin for a more compact look */
+    width: 100%;
+}
+
+/* Input box layout */
+.modal-content .input-box {
+    flex: 1; /* Allow input boxes to grow equally */
+    width: 100%; /* Set a minimum width for better responsiveness */
+    display: flex;
+    flex-direction: column; /* Align label and input vertically */
+}
+
+/* Label styling */
+.modal-content label {
+    margin-bottom: 8px; /* Space between label and input */
+    font-size: 15px;
+    color: var(--color-default);
+}
+
+.modal-content select {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid var(--color-default);
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    background-color: #fff; /* Optional: adjust background */
+    appearance: none; /* Optional: removes default dropdown arrow for custom styling */
+}
+
+/* Optional: Add hover or focus effects */
+.modal-content select:focus {
+    border-color: var(--color-focus); /* Customize this variable or use a color code */
+    outline: none; /* Removes default focus outline */
+}
+
+/* Input field styling */
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content input[type="password"],
+.modal-content input[type="number"]  {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid var(--color-default);
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content input[type="email"]:focus,
+.modal-content input[type="password"]:focus,
+.modal-content input[type="number"]:focus {
+    border-color: var(--color-second);
+    outline: none;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+    .modal-content .input-box {
+        flex-basis: 100%; /* Input boxes take full width on smaller screens */
+    }
+}
+
+/* Close button */
+.close {
+    color: var(--color-default);
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--color-default2); /* Darker color on hover */
+    text-decoration: none;
+}
+
+/* Headline for the modal */
+.modal-content h2 {
+    font-size: 24px;
+    color: var(--color-default);
+    margin-bottom: 15px;
+}
+
+/* Submit button */
+.modal-content button[type="submit"] {
+    background-color: var(--color-default); /* Primary button color */
+    color: var(--color-white);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-content button[type="submit"]:hover {
+    background-color: var(--color-default2); /* Slightly darker on hover */
+}
+
+.modal-content button[type="submit"]:active {
+    transform: scale(0.97); /* Shrink effect on click */
+}
+
